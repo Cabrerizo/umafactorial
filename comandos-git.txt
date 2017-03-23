@@ -1,0 +1,82 @@
+giPractica 1 GITHUB. COMANDOS UTILIZADOS Y BREVE EXPLICACIÓN.
+
+1)
+Primero nos situamos en la carpeta donde queramos albergar el archivo. Para ello, utilizamos el comando cd
+	git clone url_del_repositorio -> con esto copiamos en nuestro ordenador una copia del repositorio original situado en el host.
+Para poder proseguir con normalidad es necesario utilizar los comandos git config user.name/user.email "---" para que a la hora de comentar o actualizar
+el repositorio online se sepa quién está modificando qué.
+2)
+Una vez creado el archivo factorial.java y añadido a nuestro repositorio local (por comodidad para el comando add) vamos a añadirlo al proyecto.
+	git add factorial.java -> añadimos la primera versión de nuestro código.
+3)
+Una importante utilidad de GITHUB es la utilización de comentarios, que nos ayudarán a tener organizadas todas las actualizaciones y cambios que hagamos.
+	git commit -m "nuestro_mesaje" -> se guarda el comenario con el cambio más reciente y apunta quién lo ha hecho (imprescindible git config de antes)
+4)
+Modificamos el archivo con las nuevas exigencias y volvemos a actualizar
+	git add factorial.java
+	git commit -m "refactorizacion"
+Es coveniente ir viendo el desarrolo con el comando gitk --all , que nos muestra de manera gráfica el desarrollo del proyecto.
+5)
+Subimos el trabajo al respositorio en la nube, lugar donde se encuentra el proyecto base.
+	git push origin master -> enviamos los cambios de la rama actual
+Para seguir trabajando de forma independiente sin tocar tantas veces el mismo código, se pueden crear ramas. Nos permiten que varias persnas trabajen sobre
+el mismo documento de forma independiente para después unirlos. Lo veremos más adelante.
+	git checkout -b recursivo -> creamos la rama 
+6 y 7)
+Nos encontramos en la rama recursivo, modificamos, subimos archivo y enviamos al repositorio de GitHub.
+	git add factorial.java
+	git commit -m "implementacion recursiva"
+	git push origin recursivo
+8, 9 y 10)
+
+	git checkout master -> nos cambiamos de rama
+Modificamos el archivo java
+	git add factorial.java
+	git commit -m "correcion numeros negativos"
+	git push origin master
+11)
+	git checkout recursivo
+Modificamos archivo java
+	git add factorial.java
+	git commit -m "optimizacion"
+12)
+Ahora llega el punto dnde las ramas master y recursivo han sido trabajadas de forma independiente, por lo que queremos unir a la rama master los cambios de la recursiva.
+	git checkout master
+	git merge recursivo -> unimos
+13 y 14)
+Creamos nueva rama para mejorar la entrada/salida.
+	git checkout -b refacIO
+Modificamos archivo java
+	git add factorial.java
+	git commit-m "refactorizacion metodo entrada"
+15 y 16)
+Mientramos modificamos, llama el cliente y nos vemos forzados a cambiar de espacio de trabajo.
+Necesitamos guardar el codigo por donde vamos. 
+	git stash
+	git checkout master
+Modificamos archivo java	
+	git add factorial.java
+	git commit -m "cambio de long a BigInteger"
+	git push origin master
+	git checkout refacIO
+	git stash pop  -> seguimos trabajando por donde íbamos después de arreglar un fallo y subirlo
+Ahora sí añadimos y guardamos.
+	git add factorial.java
+	git commit -m  "refactorizacion de metodo de salida"
+17)
+Queremos hacer lo mismo que antes con la rama refacIO, unirla a la master.
+	git  checkout  master
+	git merge refacIO
+Nos fallará porque GitHub detecta que hemos modificados varias partes iguales y nos dice donde hay conflictos.
+18 y 19)
+Arreglamos los cambios manualmente y añadimos los cambios.
+	git add factorial.java
+	git commit -m "mezcla de rama refacIO"
+	git push origin master
+20, 21 y 22)
+Subimos este documento para los empleados
+	git add comandos-git.txt
+Y sincronizamos todas las ramas con el repositorio de GitHub
+	git push --all origin
+
+	
